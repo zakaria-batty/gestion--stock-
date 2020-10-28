@@ -18,7 +18,7 @@ if (isset($_POST['modifier'])) :
     $quantite = htmlentities($_POST['quantite']);
     $idform = htmlentities($_POST['id']);
 
-    $query = "UPDATE produit SET  `nom_produit` = '$nom', `prix` = '$prix', `ville` = '$ville', `id_fournisseur` = '$fournisseur', `quantite` = '$quantite' id = '$idform'";
+    $query = "UPDATE produit SET  `nom_produit` = '$nom', `prix` = '$prix', `ville` = '$ville', `id_fournisseur` = '$fournisseur', `quantite` = '$quantite' WHERE id = '$idform'";
     $run = mysqli_query($connect, $query);
     if ($run) {
         header('location:modifier.php?message=modifier');
@@ -30,8 +30,8 @@ endif;
 <div class="container">
     <div class="row my-4">
         <div class="col-md-8 mx-auto">
-            <div class="card bg-secondary text-white">
-                <div class="card-header">modifier produit</div>
+            <div class="card bg-secondary ">
+                <div class="card-header text-white">modifier produit</div>
                 <div class="card-body bg-light">
 
                     <a href="../index.php" class="btn btn-sm btn-primary mr-2 mb-2">
@@ -77,7 +77,7 @@ endif;
                         </div>
                         <div class="form-group">
                             <label for="poste">quantité*</label>
-                            <input type="text" name="quanite" class="form-control" placeholder="quanite" value="<?= isset($call['quantite']) ? $call['quantite'] : ''; ?>">
+                            <input type="text" name="quantite" class="form-control" placeholder="quanite" value="<?= isset($call['quantite']) ? $call['quantite'] : ''; ?>">
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit" name="modifier">Modifier</button>
